@@ -5,6 +5,7 @@
     <title>Creative 2 | Steam Api</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
    <!-- The JQuery CDN has to come before the bootstrap JS CDN. -->
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -24,6 +25,46 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-
+    <div class="container">
+        <!-- Search form goes here -->
+        <form class="form-inline">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon">@</div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div><h1>User is banned from games!</h1></div>
+        </form>
+    </div>
+    <div class="container">
+        <!-- Result table can go here -->
+        <table class="table table-responsive" id="steam-results-table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Game</th>
+                <th>Time Spent</th>
+                <th>Achieve %</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>150 hours</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>150 hours</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>150 hours</td>
+                <td>90%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
