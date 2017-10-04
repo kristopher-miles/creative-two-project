@@ -3,6 +3,7 @@ const TEST_USER = "76561197995931407";
 const ALL_GAMES = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
 const GAME_SCHEMA = "http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/";
 const MASTER_GAME_LIST = "http://api.steampowered.com/ISteamApps/GetAppList/v0001/";
+const USER_BANS = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
 var sumPlaytime;
 
 function getAllGames(){
@@ -26,6 +27,45 @@ function getAllGames(){
           alert("Kill me now.");
       }
    });
+}
+
+function playerBanned(){
+	$("#bans").css('display','block');
+	$("#bans").html("User is banned from games!");
+}
+
+function playerNeverBanned(){
+	$("#bans").css('display','block');
+	$("#bans").html("User is a good community member! Never banned!");
+}
+
+function hasBans(){
+	var user = getUser();
+	url = USER_BANS+"?key="+STEAM_API_KEY+"&steamids="+user+"&format=json";
+	$.ajax({
+      type: 'GET',
+      url: url,
+      contentType: 'text/plain',
+      xhrFields: {
+            withCredentials: false
+      },
+      headers: {},
+      success: function(parsed_json) {
+          var vacBan = parsed_json['players'][0]['VACBanned'];
+		  var communityBan = parsed_json['players'][0]['CommunityBanned'];
+          var econBan = parsed_json['players'][0]['EconomyBan'];
+		  if(vacBan==true||communityBan==true||econBan==true){
+			  playerBanned();
+		  }
+		  else{
+			  playerNeverBanned();
+		  }
+      },
+      error: function() {
+          alert("Kill me now.");
+      }
+   });
+	
 }
 
 function newUpdateTable(userGamesTable){                
@@ -57,6 +97,7 @@ function newUpdateTable(userGamesTable){
           }
           
           //Finally, update the output table.
+		  hasBans();
           updatePage(userGamesTable);
         
       },

@@ -5,3 +5,7 @@ body {
 #steam-results-table {
     margin-top: 25px;
 }
+
+#bans{
+	display:none;
+}
