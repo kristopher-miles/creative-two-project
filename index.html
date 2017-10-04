@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Creative 2 | Steam Api</title>
-
+    <link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles" >
+    <link rel="openid2.local_id" href="http://www.google.com/profiles/ginatrapani" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
    <!-- The JQuery CDN has to come before the bootstrap JS CDN. -->
@@ -31,7 +32,7 @@
             <label class="sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon">@</div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                <input type="text" class="form-control" id="username-input" placeholder="SteamID">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <div><h1>User is banned from games!</h1></div>
@@ -47,7 +48,7 @@
                 <th>Achieve %</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="output-table">
             <tr>
                 <th scope="row">1</th>
                 <td>150 hours</td>
@@ -66,5 +67,7 @@
             </tbody>
         </table>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
