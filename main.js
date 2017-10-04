@@ -98,6 +98,10 @@ function newUpdateTable(userGamesTable){
           
           //Finally, update the output table.
 		  hasBans();
+		  userGamesTable.sort(function(a, b) {
+    		return parseFloat(a.playtime_forever) - parseFloat(b.playtime_forever);
+		  });
+		  userGamesTable.reverse();
           updatePage(userGamesTable);
         
       },
