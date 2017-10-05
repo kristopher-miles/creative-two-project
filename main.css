@@ -9,3 +9,12 @@ body {
 #bans{
 	display:none;
 }
+
+.btn {
+	display:inline;
+	margin-left:3px;
+}
+
+#alerts{
+	margin-bottom:1em;
+}

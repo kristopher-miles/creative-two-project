@@ -84,6 +84,9 @@ function updatePage(games){
         }
     }
     $("#output-table").html(output);
+	sumPlaytime = (sumPlaytime/60/24).toFixed(1);
+	var hoursPlayedHTML = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>This user has played "+sumPlaytime+" days.</div>";
+	$("#alerts").html();
 }
 
 function addRow(games, i){
@@ -91,9 +94,7 @@ function addRow(games, i){
     output+=games[i]["name"];
     output+="</th><td>";
     output+=games[i]["played"];
-    output+=" hours</td><td>";
-    output+=games[i]["numAchievements"];
-    output+="</td></tr>";
+    output+=" hours</td></tr>";
     return output;
 }
 

@@ -26,16 +26,26 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="jumbotron jumbotron-fluid">
+  		<div class="container">
+    		<h1 class="display-3">How Much Wasted Time?</h1>
+    		<p class="lead">How much of your life have you wasted playing computer games? Enter your steamID and you can find out. Be warned: some things man was not meant to know.</p>
+  		</div>
+	</div>
+	
     <div class="container">
+		<div id="alerts"></div>
         <!-- Search form goes here -->
         <form class="form-inline">
             <label class="sr-only" for="username-input">Username</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon">@</div>
-                <input type="text" class="form-control" id="username-input" placeholder="Steam display name">
+                <input type="text" class="form-control" id="username-input" placeholder="SteamID">
+				<button class="btn btn-primary" id="search-username">Search</button>
+				<button class="btn btn-primary" id="what-steam">What is my steamID?</button>
             </div>
         </form>
-        <div><button class="btn btn-primary" id="search-username">Submit Search</button></div>
+        <div></div>
         <div><h1 id="bans"></h1></div>
     </div>
     <div class="container">
@@ -45,7 +55,6 @@
             <tr>
                 <th>Game</th>
                 <th>Time Spent</th>
-                <th>Achieve %</th>
             </tr>
             </thead>
             <tbody id="output-table">
