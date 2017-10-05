@@ -98,7 +98,8 @@ function addRow(games, i){
     return output;
 }
 
-$("#search-username").click(function(){
+$("#search-username").click(function(e){
+	e.preventDefault();
     var user = $("#username-input").val();
     if (user === "") {
         populateUserPlayedGames(TEST_USER)
