@@ -50,30 +50,20 @@ function playerNeverBanned(){
 function hasBans(user) {
     var params = "?command=bans&steamid=" + user.toString();
     var url = "http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com/creative-two-project/steam.php" + params;
-	$.ajax({
-      type: 'GET',
-      url: url,
-      contentType: 'text/plain',
-      xhrFields: {
-            withCredentials: false
-      },
-      headers: {},
-      success: function(parsed_json) {
-          var vacBan = parsed_json['players'][0]['VACBanned'];
-		  var communityBan = parsed_json['players'][0]['CommunityBanned'];
-          var econBan = parsed_json['players'][0]['EconomyBan'];
+    $.getJSON(url).done(function ( data ) {
+          var vacBan = data['players'][0]['VACBanned'];
+		  var communityBan = data['players'][0]['CommunityBanned'];
+          var econBan = data['players'][0]['EconomyBan'];
 		  if(vacBan==true||communityBan==true||econBan==true){
 			  playerBanned();
 		  }
 		  else{
 			  playerNeverBanned();
 		  }
-      },
-      error: function() {
-          alert("Kill me now.");
-      }
-   });
-	
+        })
+        .fail(function () {
+            console.log("Non-fatal error, continuing.");
+        });
 }
 
 //This function updates the page with the information we now know from all our HTTP requests. We pass in the finished table when we're done getting crap.
