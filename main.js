@@ -9,10 +9,15 @@ function populateUserPlayedGames(userID){
     var params = "?command=games&steamid=" + userID.toString();
     var url = "http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com/creative-two-project/steam.php" + params;
     console.log("Got: "+this.url);
-    $.getJSON(url);
-    var games = data['response']['games'];
-    processUserGames(games);
-    //hasBans(userID);
+    $.getJSON(url).done(function ( data ) {
+            var games = data['response']['games'];
+            processUserGames(games);
+            //hasBans(userID);
+        })
+        .fail(function () {
+            console.warn("Failed to make the REST call!");
+            alert("API call failed!");
+        })
 }
 
 function processUserGames(games){
