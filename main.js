@@ -124,8 +124,9 @@ $(document).ready(function() {
     
     $("#sample-user").click(function(e){
        e.preventDefault();
-        $("#username-input").val(TEST_USER;
+        $("#username-input").val(TEST_USER);
         populateUserPlayedGames(TEST_USER);
     });
     
 });
+//Yes there is.
