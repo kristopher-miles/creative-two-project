@@ -5,6 +5,7 @@ const USER_BANS = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
 var sumPlaytime;
 
 function populateUserPlayedGames(userID){
+    $("#alerts").html("");
     console.log("Getting stats for " + userID);
     var params = "?command=games&steamid=" + userID.toString();
     var url = "http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com/creative-two-project/steam.php" + params;
@@ -16,17 +17,25 @@ function populateUserPlayedGames(userID){
         })
         .fail(function () {
             console.warn("Failed to make the REST call!");
-            alert("API call failed!");
         })
 }
 
 function processUserGames(games){
+    if (games==null){
+        userNotFound();
+        return null;
+    }
     sumPlaytime=0;
     games.sort(function(a, b) {
         return parseFloat(a.playtime_forever) - parseFloat(b.playtime_forever);
     });
     games.reverse();
     updatePage(games);
+}
+
+function userNotFound(){
+    var html = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>This user cannot be found. Is that a valid steamID?</div>";
+    $("#alerts").html(html); 
 }
 
 function playerBanned(){
