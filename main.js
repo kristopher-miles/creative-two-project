@@ -6,21 +6,13 @@ var sumPlaytime;
 
 function populateUserPlayedGames(userID){
     console.log("Getting stats for " + userID);
-    var params = "?key=" + STEAM_API_KEY + "&steamid=" + userID.toString() + "&format=json" +
-        "&include_appinfo=1&include_played_free_games=1";
-    var url = ALL_GAMES_URL + params;
-    $.get(url)
-        .done(function ( data ) {
-            console.log(this.url);
-            var games = data['response']['games'];
-            console.log(games);
-            processUserGames(games);
-            hasBans(userID);
-        })
-        .fail(function () {
-            console.warn("Failed to make the REST call!");
-            alert("API call failed!");
-        })
+    var params = "?command=games&steamid=" + userID.toString();
+    var url = "http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com/creative-two-project/steam.php" + params;
+    console.log("Got: "+this.url);
+    $.getJSON(url);
+    var games = data['response']['games'];
+    processUserGames(games);
+    //hasBans(userID);
 }
 
 function processUserGames(games){
