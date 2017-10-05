@@ -44,7 +44,7 @@ function playerBanned(){
 
 function playerNeverBanned(){
 	$("#bans").css('display','block');
-	$("#bans").html("User is a good community member! Never banned!");
+	$("#bans").html("User has never been banned from a game.");
 }
 
 function hasBans(user) {
@@ -54,7 +54,7 @@ function hasBans(user) {
           var vacBan = data['players'][0]['VACBanned'];
 		  var communityBan = data['players'][0]['CommunityBanned'];
           var econBan = data['players'][0]['EconomyBan'];
-		  if(vacBan==true||communityBan==true||econBan==true){
+		  if(vacBan==true||communityBan==true||econBan!="none"){
 			  playerBanned();
 		  }
 		  else{
@@ -94,17 +94,18 @@ function addRow(games, i){
     return output;
 }
 
-
-
 $(document).ready(function() {
     $("#search-username").click(function(e){
         e.preventDefault();
         var user = $("#username-input").val();
-        if (user === "") {
-            populateUserPlayedGames(TEST_USER);
+        if (user.toString().length==17&&!isNaN(user.toString())) {
+            $("#alerts").html("");
+            populateUserPlayedGames(user);
         }
-        populateUserPlayedGames(user);
-    
+        else{
+           var alertHTML = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>Are you sure that is a valid steamID? A valid ID will be a number 17 digits long.</div>";
+	       $("#alerts").html(alertHTML); 
+        }
     });
     $("#whatis").toggle(false);
     $('#what-steam').click(function(e) {
@@ -119,4 +120,3 @@ $(document).ready(function() {
     });
     
 });
-//Yes there is.
