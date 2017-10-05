@@ -7,7 +7,7 @@ const USER_BANS = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
 var sumPlaytime;
 
 function populateUserPlayedGames(){
-    sumPlaytime=0;
+    
     var user = getUser();
     var url = ALL_GAMES+"?key="+STEAM_API_KEY+"&steamid="+user+"&include_appinfo=1&include_played_free_games=1&format=json";
     var table;
@@ -30,14 +30,7 @@ function populateUserPlayedGames(){
 }
 
 function processUserGames(table){  
-    for(var i =0;i<table.length;i++){
-        var gameTime = table[i].playtime_forever;
-        console.log(gameTime);
-        if(gameTime>0){
-            table[i]['played']=(gameTime/60).toFixed(2);
-            sumPlaytime+=gameTime;
-        }
-    }
+    sumPlaytime=0;
     hasBans();
     table.sort(function(a, b) {
         return parseFloat(a.playtime_forever) - parseFloat(b.playtime_forever);
@@ -91,10 +84,11 @@ function updatePage(table){
     console.log("Time to update the page");
     for(var i =0;i<table.length;i++){
         //We only want to include games the user has actually played.
-        if(table[i]["playtime_forever"]>0){
-            console.log("This game has playtime. "+table[i]['name']+" "+table[i]['played']+" time.");
+        var gameTime = table[i]["playtime_forever"];
+        if(gameTime>0){
+            table[i]['played']=(gameTime/60).toFixed(2);
             output += addRow(table, i);
-            
+            sumPlaytime+=gameTime;
         }
     }
     $("#output-table").html(output);
