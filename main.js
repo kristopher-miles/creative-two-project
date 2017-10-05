@@ -21,16 +21,17 @@ function populateUserPlayedGames(userID){
 }
 
 function processUserGames(games){
-    if (games==null){
+    if (games==undefined||games==null||games.length==0){
         userNotFound();
-        return null;
     }
-    sumPlaytime=0;
-    games.sort(function(a, b) {
-        return parseFloat(a.playtime_forever) - parseFloat(b.playtime_forever);
-    });
-    games.reverse();
-    updatePage(games);
+    else{
+        sumPlaytime=0;
+        games.sort(function(a, b) {
+            return parseFloat(a.playtime_forever) - parseFloat(b.playtime_forever);
+        });
+        games.reverse();
+        updatePage(games);
+    }
 }
 
 function userNotFound(){
