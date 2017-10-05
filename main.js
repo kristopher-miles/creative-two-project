@@ -1,5 +1,4 @@
 const TEST_USER = "76561197995931407";
-const ALL_GAMES_URL = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
 const USER_BANS = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
 var sumPlaytime;
 
@@ -12,10 +11,10 @@ function populateUserPlayedGames(userID){
     $.getJSON(url).done(function ( data ) {
             var games = data['response']['games'];
             processUserGames(games);
-            //hasBans(userID);
+            hasBans(userID);
         })
         .fail(function () {
-            console.warn("Failed to make the REST call!");
+            console.log("Non-fatal error, continuing.");
         })
 }
 
@@ -49,7 +48,8 @@ function playerNeverBanned(){
 }
 
 function hasBans(user) {
-	url = USER_BANS+"?key="+STEAM_API_KEY+"&steamids="+user+"&format=json";
+    var params = "?command=bans&steamid=" + user.toString();
+    var url = "http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com/creative-two-project/steam.php" + params;
 	$.ajax({
       type: 'GET',
       url: url,
@@ -124,7 +124,7 @@ $(document).ready(function() {
     
     $("#sample-user").click(function(e){
        e.preventDefault();
-        $("#username-input").val(TEST_USER);
+        $("#username-input").val(TEST_USER;
         populateUserPlayedGames(TEST_USER);
     });
     

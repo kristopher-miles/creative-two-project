@@ -6,6 +6,10 @@ if ($_GET["command"] == "games") {
     $url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/" . "?key=" . $STEAM_API_KEY . "&steamid=" . $_GET["steamid"] . "&format=json" . "&include_appinfo=1&include_played_free_games=1";
 }
 
+if ($_GET["command"] == "bans") {
+    $url = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/" . "?key=" . $STEAM_API_KEY . "&steamids=" . $_GET["steamid"] . "&format=json";
+}
+
 // create a new cURL resource
 $ch = curl_init();
 
