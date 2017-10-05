@@ -29,14 +29,14 @@
     <div class="container">
         <!-- Search form goes here -->
         <form class="form-inline">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <label class="sr-only" for="username-input">Username</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon">@</div>
-                <input type="text" class="form-control" id="username-input" placeholder="SteamID">
+                <input type="text" class="form-control" id="username-input" placeholder="Steam display name">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <div><h1 id="bans"></h1></div>
         </form>
+        <div><button class="btn btn-primary" id="search-username">Submit Search</button></div>
+        <div><h1 id="bans"></h1></div>
     </div>
     <div class="container">
         <!-- Result table can go here -->
@@ -49,22 +49,6 @@
             </tr>
             </thead>
             <tbody id="output-table">
-            <tr>
-                <th scope="row">1</th>
-                <td>150 hours</td>
-                <td>90%</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>150 hours</td>
-                <td>90%</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>150 hours</td>
-                <td>90%</td>
-            </tr>
-            </tbody>
         </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
