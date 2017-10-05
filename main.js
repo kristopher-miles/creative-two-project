@@ -83,7 +83,7 @@ function updatePage(games){
     $("#output-table").html(output);
 	sumPlaytime = (sumPlaytime/60/24).toFixed(1);
 	var hoursPlayedHTML = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>This user has played "+sumPlaytime+" days.</div>";
-	$("#alerts").html();
+	$("#alerts").html(hoursPlayedHTML);
 }
 
 function addRow(games, i){
