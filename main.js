@@ -101,14 +101,7 @@ $("#search-username").click(function(e){
     if (user === "") {
         populateUserPlayedGames(TEST_USER)
     }
-    var url = "http://steamcommunity.com/id/" + user.toLowerCase() + "?xml=1";
-    console.log("url: " + url);
-    $.get(url, function(data, status){
-        if (data.getElementsByTagName("error").length > 0) {
-            console.warn("User does not exist!");
-        }
-        var steamID = data.getElementsByTagName("steamID64")[0].childNodes[0].data;
-        console.log(steamID);
-        populateUserPlayedGames(steamID);
-    });
+    
+    populateUserPlayedGames(user);
+    
 });
