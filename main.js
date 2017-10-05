@@ -1,4 +1,3 @@
-const STEAM_API_KEY = "43377D01563646A8748EF8FBCB0E1B7E";
 const TEST_USER = "76561197995931407";
 const ALL_GAMES_URL = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
 const USER_BANS = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
@@ -35,7 +34,7 @@ function processUserGames(games){
 }
 
 function userNotFound(){
-    var html = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>This user cannot be found. Is that a valid steamID?</div>";
+    var html = "<div class=&quot;alert alert-success&quot; role=&quot;alert&quot;>This user cannot be found. Is that steam profile public?</div>";
     $("#alerts").html(html); 
 }
 
@@ -105,13 +104,28 @@ function addRow(games, i){
     return output;
 }
 
-$("#search-username").click(function(e){
-	e.preventDefault();
-    var user = $("#username-input").val();
-    if (user === "") {
-        populateUserPlayedGames(TEST_USER)
-    }
+
+
+$(document).ready(function() {
+    $("#search-username").click(function(e){
+        e.preventDefault();
+        var user = $("#username-input").val();
+        if (user === "") {
+            populateUserPlayedGames(TEST_USER);
+        }
+        populateUserPlayedGames(user);
     
-    populateUserPlayedGames(user);
+    });
+    $("#whatis").toggle(false);
+    $('#what-steam').click(function(e) {
+        e.preventDefault();
+         $('#whatis').toggle("slide");
+    });
+    
+    $("#sample-user").click(function(e){
+       e.preventDefault();
+        $("#username-input").val(TEST_USER);
+        populateUserPlayedGames(TEST_USER);
+    });
     
 });

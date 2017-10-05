@@ -34,7 +34,7 @@
 	</div>
 	
     <div class="container">
-		<div id="alerts"></div>
+		
         <!-- Search form goes here -->
         <form class="form-inline">
             <label class="sr-only" for="username-input">Username</label>
@@ -43,10 +43,13 @@
                 <input type="text" class="form-control" id="username-input" placeholder="SteamID">
 				<button class="btn btn-primary" id="search-username">Search</button>
 				<button class="btn btn-primary" id="what-steam">What is my steamID?</button>
+                <button class="btn btn-primary" id="sample-user">Sample Profile</button>
             </div>
         </form>
         <div></div>
         <div><h1 id="bans"></h1></div>
+        <div id="alerts"></div>
+        <p id="whatis">Your SteamID is a unique 64 bit code that identifies your steam profile. You can extract it from your steam profile's url, or by logging into a service like <a href="https://steamid.io/">STEAMID I/O</a>. Your profile must also be set to public for this site to work.</p>
     </div>
     <div class="container">
         <!-- Result table can go here -->
