@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creative 2 | Steam Api</title>
+    <link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles" >
+    <link rel="openid2.local_id" href="http://www.google.com/profiles/ginatrapani" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+   <!-- The JQuery CDN has to come before the bootstrap JS CDN. -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+  		<div class="container">
+    		<h1 class="display-3">How Much Wasted Time?</h1>
+    		<p class="lead">How much of your life have you wasted playing computer games? Enter your steamID and you can find out. Be warned: some things man was not meant to know.</p>
+  		</div>
+	</div>
+	
+    <div class="container">
+		
+        <!-- Search form goes here -->
+        <form class="form-inline">
+            <label class="sr-only" for="username-input">Username</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon">@</div>
+                <input type="text" class="form-control" id="username-input" placeholder="SteamID">
+				<button class="btn btn-primary" id="search-username">Search</button>
+				<button class="btn btn-primary" id="what-steam">What is my steamID?</button>
+                <button class="btn btn-primary" id="sample-user">Sample Profile</button>
+            </div>
+        </form>
+        <div></div>
+        <div><h1 id="bans"></h1></div>
+        <div id="alerts"></div>
+        <p id="whatis">Your SteamID is a unique 64 bit code that identifies your steam profile. You can extract it from your steam profile's url, or by logging into a service like <a href="https://steamid.io/">STEAMID I/O</a>. Your profile must also be set to public for this site to work.</p>
+    </div>
+    <div class="container">
+        <!-- Result table can go here -->
+        <table class="table table-responsive" id="steam-results-table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Game</th>
+                <th>Time Spent</th>
+            </tr>
+            </thead>
+            <tbody id="output-table">
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../javascripts/main.js"></script>
+</body>
+</html>

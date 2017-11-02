@@ -1,0 +1,16 @@
+#steam-results-table {
+    margin-top: 25px;
+}
+
+#bans{
+	display:none;
+}
+
+.btn {
+	display:inline;
+	margin-left:5px;
+}
+
+#alerts{
+	margin-bottom:1em;
+}
